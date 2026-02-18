@@ -14,19 +14,21 @@
 #endif
 
 
-Worley wrp;
+Worley wy;
 
 void Setup(AlxWindow* w){
 	RGA_Set(Time_Nano());
-	wrp = Worley_New(10.0f,10.0f,10);
+	wy = Worley_New(10.0f,10.0f,10);
 }
 void Update(AlxWindow* w){
+	TransformedView_HandlePanZoom(&wy.tv,w->Strokes,GetMouse());
+
 	Clear(BLACK);
 
-	Worley_Render(&wrp,WINDOW_STD_ARGS);
+	Worley_Render(&wy,WINDOW_STD_ARGS);
 }
 void Delete(AlxWindow* w){
-	Worley_Free(&wrp);
+	Worley_Free(&wy);
 }
 
 int main(){
