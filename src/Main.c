@@ -43,10 +43,10 @@ void Update(AlxWindow* w){
 		p = NULL;
 	}
 
-	Worley_Update(&wy);
 
 	Clear(BLACK);
 
+	Worley_Update(&wy);
 	Worley_Render(&wy,WINDOW_STD_ARGS);
 }
 void Delete(AlxWindow* w){
