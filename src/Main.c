@@ -18,7 +18,7 @@ Worley wy;
 Vec2* p;
 
 void Setup(AlxWindow* w){
-	RGA_Set(Time_Nano());
+	Random_Set(Time_Nano());
 	wy = Worley_New(100.0f,100.0f,4);
 	p = NULL;
 }
