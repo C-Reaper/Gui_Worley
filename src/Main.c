@@ -1,12 +1,12 @@
 #if defined __linux__
 #include "/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "/home/codeleaded/System/Static/Library/Worley.h"
+#include "Worley.h"
 #elif defined _WINE
 #include "/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "/home/codeleaded/System/Static/Library/Worley.h"
+#include "Worley.h"
 #elif defined _WIN32
 #include "F:/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "F:/home/codeleaded/System/Static/Library/Worley.h"
+#include "Worley.h"
 #elif defined(__APPLE__)
 #error "Apple not supported!"
 #else
