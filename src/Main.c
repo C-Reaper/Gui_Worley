@@ -1,25 +1,24 @@
 #if defined __linux__
 #include "/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "Worley.h"
+#include "/home/codeleaded/System/Static/Library/Worley.h"
 #elif defined _WINE
 #include "/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "Worley.h"
+#include "/home/codeleaded/System/Static/Library/Worley.h"
 #elif defined _WIN32
 #include "F:/home/codeleaded/System/Static/Library/WindowEngine1.0.h"
-#include "Worley.h"
+#include "F:/home/codeleaded/System/Static/Library/Worley.h"
 #elif defined(__APPLE__)
 #error "Apple not supported!"
 #else
 #error "Platform not supported!"
 #endif
 
-
 Worley wy;
 Vec2* p;
 
 void Setup(AlxWindow* w){
 	Random_Set(Time_Nano());
-	wy = Worley_New(100.0f,100.0f,4);
+	wy = Worley_New(100.0f,100.0f,0);
 	p = NULL;
 }
 void Update(AlxWindow* w){
@@ -41,6 +40,20 @@ void Update(AlxWindow* w){
 	}
 	if(Stroke(ALX_MOUSE_L).RELEASED){
 		p = NULL;
+	}
+	if(Stroke(ALX_MOUSE_R).PRESSED){
+		const int psize = wy.points.size;
+		
+		for(int i = 0;i<wy.points.size;i++){
+			Vec2* pp = (Vec2*)Vector_Get(&wy.points,i);
+			
+			if(Circle_Point((Circle[]){ Circle_New(*pp,1.0f) },m)){
+				Vector_Remove(&wy.points,i);
+				break;
+			}
+		}
+
+		if(psize == wy.points.size) Vector_Push(&wy.points,(Vec2[]){ m });
 	}
 
 
